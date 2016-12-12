@@ -12,7 +12,6 @@ sqlintercept is designed to help you increase your application's performance by 
 ## Requirements
 
 - go 
-- mysql
 
 #Installation
 
