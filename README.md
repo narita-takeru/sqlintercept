@@ -1,6 +1,8 @@
 
 mysqlとの通信を傍受して、 テーブル毎の`SELECT`の回数をカウントするツールです。
 
+![説明画像] (https://github.com/narita-takeru/sqlintercept/blob/master/sqlintercept-readme.gif)
+
 ```
 go run main.go -src=127.0.0.1:3305 -dst=127.0.0.1:3306
 ```
