@@ -2,6 +2,7 @@ package sqlintercept
 
 import (
 	"fmt"
+	"sync"
 	ui "github.com/gizak/termui"
 	"github.com/narita-takeru/tcpstream"
 	"os"
@@ -10,6 +11,8 @@ import (
 )
 
 func Start(src, dst string) {
+
+	mutex := new(sync.Mutex)
 
 	counts := map[string]int{}
 	go doCurses(counts)
@@ -20,7 +23,9 @@ func Start(src, dst string) {
 		group := regexTableName.FindSubmatch(b)
 		if 0 < len(group) {
 			tblName := string(group[1])
+			mutex.Lock()
 			counts[tblName]++
+			mutex.Unlock()
 			ui.StopLoop()
 		}
 	}
