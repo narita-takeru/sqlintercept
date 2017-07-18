@@ -18,7 +18,7 @@ func Start(src, dst string) {
 	go doCurses(counts)
 
 	t := tcpstream.Thread{}
-	t.SrcToDstHook = func(b []byte) []byte {
+	t.SrcToDstHook = func(id, seq int, b []byte) []byte {
 		regexTableName := regexp.MustCompile("[f|F][r|R][o|O][m|M] ([^ ]+)")
 		group := regexTableName.FindSubmatch(b)
 		if 0 < len(group) {
